@@ -195,6 +195,11 @@ body.dark-mode h4 {
 
 .preloader-content {
     text-align: center;
+    width: fit-content;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .logo-loader {
@@ -248,7 +253,7 @@ body.dark-mode h4 {
 }
 
 .loading-bar {
-    width: 200px;
+    width: 100%;
     height: 3px;
     background: rgba(255, 255, 255, 0.1);
     position: relative;
@@ -3067,8 +3072,8 @@ body.dark-mode .gallery-section {
     }
 }
 
-@media (max-width: 380px) {
-    /* Optimization for very small screens (iPhone SE, etc) */
+@media (max-width: 500px) {
+    /* Optimization for mobile devices */
 
     .hero-title {
         font-size: 32px;
@@ -3083,18 +3088,19 @@ body.dark-mode .gallery-section {
 
     .experience-badge {
         /* Adjust badge position and size so it doesn't cover too much */
-        width: 100px;
-        height: 100px;
-        padding: 10px;
+        width: auto;
+        height: auto;
+        padding: 15px 20px;
         right: 10px;
         bottom: 10px;
+        text-align: center;
     }
 
-    .experience-badge .year {
+    .badge-number {
         font-size: 28px;
     }
 
-    .experience-badge .text {
+    .badge-text {
         font-size: 9px;
     }
 
