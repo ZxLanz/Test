@@ -2574,6 +2574,13 @@ body.dark-mode .footer {
     padding-left: 5px;
 }
 
+.footer-col ul a.long-text {
+    line-height: 1.4;
+    /* Better line height for wrapping text */
+    display: inline-block;
+    /* Ensure padding/transform applies to block */
+}
+
 .footer-bottom {
     padding-top: 40px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
