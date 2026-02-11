@@ -1542,6 +1542,11 @@ body.dark-mode .business-card {
     background: var(--light-gray);
 }
 
+body.dark-mode .business-card.featured {
+    /* Override gradient because --primary-dark becomes white in dark mode variables */
+    background: linear-gradient(135deg, #003cc2 0%, #001f5c 100%);
+}
+
 .business-card:hover {
     transform: translateY(-10px);
     box-shadow: var(--shadow-xl);
@@ -1551,7 +1556,7 @@ body.dark-mode .business-card {
 .business-card.featured {
     background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-navy) 100%);
     color: var(--white);
-    border-top-color: var(--gold);
+    /* border-top-color removed to allowing hovering to trigger it */
 }
 
 .business-badge {
