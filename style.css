@@ -304,7 +304,8 @@ body.dark-mode .navbar {
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.navbar.scrolled {
+.navbar.scrolled,
+.navbar.navbar-static {
     background: rgba(0, 43, 122, 0.95);
     border-bottom: 1px solid var(--gold);
     box-shadow: var(--shadow-md);
@@ -312,7 +313,8 @@ body.dark-mode .navbar {
     /* Shrink on scroll */
 }
 
-body.dark-mode .navbar.scrolled {
+body.dark-mode .navbar.scrolled,
+body.dark-mode .navbar.navbar-static {
     background: rgba(0, 30, 90, 0.98);
 }
 
@@ -3111,4 +3113,36 @@ body.dark-mode .gallery-section {
     .prop-number {
         font-size: 42px;
     }
+}
+
+/* ========================================
+   Article Page Dark Mode Overrides
+   ======================================== */
+
+.article-header {
+    background-color: var(--light-gray);
+    color: var(--primary-dark);
+}
+
+body.dark-mode .article-header {
+    background-color: var(--primary-navy);
+    color: var(--white);
+}
+
+body.dark-mode .article-content {
+    background-color: transparent;
+    color: var(--white);
+}
+
+body.dark-mode .article-content p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+body.dark-mode .breadcrumb,
+body.dark-mode .breadcrumb a {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+body.dark-mode .breadcrumb a:hover {
+    color: var(--gold);
 }

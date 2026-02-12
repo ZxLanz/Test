@@ -6,7 +6,7 @@ window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
     setTimeout(() => {
         preloader.classList.add('hidden');
-    }, 1500);
+    }, 300);
 });
 
 // ========================================
@@ -22,6 +22,9 @@ const navLinks = document.querySelectorAll('.nav-link');
 let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
+    // If navbar is static (e.g. on article page), don't toggle scrolled class
+    if (navbar.classList.contains('navbar-static')) return;
+
     const currentScroll = window.pageYOffset;
 
     // Add scrolled class
@@ -194,32 +197,34 @@ backToTop.addEventListener('click', () => {
 
 const contactForm = document.getElementById('contactForm');
 
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-    // Get form data
-    const formData = new FormData(contactForm);
-    const data = Object.fromEntries(formData);
+        // Get form data
+        const formData = new FormData(contactForm);
+        const data = Object.fromEntries(formData);
 
-    // Show loading state
-    const submitButton = contactForm.querySelector('button[type="submit"]');
-    const originalText = submitButton.innerHTML;
-    submitButton.innerHTML = 'Mengirim...';
-    submitButton.disabled = true;
+        // Show loading state
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitButton.innerHTML;
+        submitButton.innerHTML = 'Mengirim...';
+        submitButton.disabled = true;
 
-    // Simulate form submission (replace with actual API call)
-    setTimeout(() => {
-        // Success message
-        showNotification('Pesan berhasil dikirim! Kami akan menghubungi Anda segera.', 'success');
+        // Simulate form submission (replace with actual API call)
+        setTimeout(() => {
+            // Success message
+            showNotification('Pesan berhasil dikirim! Kami akan menghubungi Anda segera.', 'success');
 
-        // Reset form
-        contactForm.reset();
+            // Reset form
+            contactForm.reset();
 
-        // Reset button
-        submitButton.innerHTML = originalText;
-        submitButton.disabled = false;
-    }, 2000);
-});
+            // Reset button
+            submitButton.innerHTML = originalText;
+            submitButton.disabled = false;
+        }, 2000);
+    });
+}
 
 // ========================================
 // Notification System
