@@ -87,6 +87,29 @@ window.addEventListener('scroll', highlightNavigation);
 window.addEventListener('load', highlightNavigation);
 window.addEventListener('resize', highlightNavigation);
 
+// Logo smooth scroll to top
+const logo = document.querySelector('.logo');
+if (logo) {
+    logo.addEventListener('click', (e) => {
+        const isHomePage = window.location.pathname.endsWith('index.html') || 
+                           window.location.pathname === '/' || 
+                           window.location.pathname.endsWith('/');
+        
+        if (isHomePage) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            
+            // Set Beranda as active manually
+            navLinks.forEach(link => link.classList.remove('active'));
+            const homeLink = document.querySelector('.nav-link[href="#home"]');
+            if (homeLink) homeLink.classList.add('active');
+        }
+    });
+}
+
 // ========================================
 // Hero Slider
 // ========================================
