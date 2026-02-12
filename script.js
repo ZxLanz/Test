@@ -57,22 +57,35 @@ navLinks.forEach(link => {
 const sections = document.querySelectorAll('section[id]');
 
 function highlightNavigation() {
-    const scrollY = window.pageYOffset;
+    // Only run scroll spy if there are sections to spy on
+    if (sections.length > 0) {
+        const scrollY = window.pageYOffset;
+        let currentActive = null;
 
-    sections.forEach(section => {
-        const sectionHeight = section.offsetHeight;
-        const sectionTop = section.offsetTop - 100;
-        const sectionId = section.getAttribute('id');
+        // Find current active section
+        sections.forEach(section => {
+            const sectionHeight = section.offsetHeight;
+            const sectionTop = section.offsetTop - 150;
 
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            document.querySelector(`.nav-link[href="#${sectionId}"]`)?.classList.add('active');
-        } else {
-            document.querySelector(`.nav-link[href="#${sectionId}"]`)?.classList.remove('active');
+            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                const sectionId = section.getAttribute('id');
+                currentActive = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+            }
+        });
+
+        // Update active class
+        if (currentActive) {
+            navLinks.forEach(link => link.classList.remove('active'));
+            currentActive.classList.add('active');
         }
-    });
+    }
 }
 
+// Mobile menu toggle logic is already handled in the beginning of script.js
+// Just need basic event listeners for highlightNavigation
 window.addEventListener('scroll', highlightNavigation);
+window.addEventListener('load', highlightNavigation);
+window.addEventListener('resize', highlightNavigation);
 
 // ========================================
 // Hero Slider

@@ -307,7 +307,8 @@ body.dark-mode .navbar {
 .navbar.scrolled,
 .navbar.navbar-static {
     background: rgba(0, 43, 122, 0.95);
-    border-bottom: 1px solid var(--gold);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    /* Subtle border instead of gold */
     box-shadow: var(--shadow-md);
     padding: 10px 0;
     /* Shrink on scroll */
@@ -371,6 +372,8 @@ body.dark-mode .logo-text {
     align-items: center;
     gap: 40px;
     list-style: none;
+    position: relative;
+    /* Container for indicator */
 }
 
 .nav-link {
@@ -387,19 +390,29 @@ body.dark-mode .nav-link {
     color: rgba(255, 255, 255, 0.9);
 }
 
-.nav-link::after {
+/* Clean up old hover effect */
+/* .nav-link::after removed */
+
+/* Navbar Animation (CSS Pure) */
+/* Navbar Animation (Direction Aware) */
+/* Navbar Animation (Snippet User Style) */
+.nav-link::before {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: -2px;
     left: 0;
     width: 0;
-    height: 2px;
-    background: var(--gold);
-    transition: width var(--transition-normal);
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    border-radius: 0;
+    transition: all 0.5s ease-in-out;
 }
 
-.nav-link:hover::after {
+.nav-link:hover::before,
+.nav-link.active::before {
     width: 100%;
+    border-radius: 50px;
+    /* Pillow shape as intended by user's 50% but cleaner in px */
 }
 
 .nav-link:hover,
